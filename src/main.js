@@ -1,5 +1,29 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
+const path = require('path');
+const { exec } = require('child_process');
 
+// make sure this listener is set before your renderer.js code is called
+ipcMain.on('get-preload-path', (e) => {
+  e.returnValue = MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY;
+});
+ipcMain.on('log-sesuatu', (e) => {
+  console.log('test coba deh')
+});
+ipcMain.on('install-web-dev', () => {
+  exec(`bash  ${path.join(app.getAppPath(), 'src/shell/test.sh')}`, (error, stdout, stderr) => {
+    if (error) {
+      console.error(`Error executing the .sh file: ${error.message}`);
+      return;
+    }
+    
+    if (stderr) {
+      console.error(`Error output from the .sh file: ${stderr}`);
+      return;
+    }
+    
+    console.log(`Output from the .sh file:`);
+  });
+});
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
@@ -13,11 +37,11 @@ const createWindow = () => {
     title:"Modularitea App",
     // frame:false,
     webPreferences: {
-      preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
-      nodeIntegration: true, // <--- flag
-      enableRemoteModule:true,
-      nodeIntegrationInWorker: true, // <---  for web workers
-      preload: path.join(app.getAppPath(), 'src/preload.js')
+      preload: path.join(app.getAppPath(), 'src/preload.js'),
+      nodeIntegration: false, // <--- flag
+      contextIsolation: true,
+      enableRemoteModule:false,
+      nodeIntegrationInWorker: false, // <---  for web workers
     },
   });
 

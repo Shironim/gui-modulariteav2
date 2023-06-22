@@ -13,36 +13,21 @@ const ButtonInstall = ({type}) =>{
    }).then((result) => {
       if(result.value){
         console.log('result true : ', result.value)
-      //  if (type === 'ModulFE') {
-      //   InstallApp('ModulFE')
-      //  }
+       if (type === 'ModulFE') {
+        console.log('Install ModulFE')
+        // InstallApp('ModulFE')
+       }else if(type === 'ModulBE'){
+        console.log('Install ModulBE')
+       }else if(type === 'ModulMobile'){
+        console.log('Install ModulMobile')
+       }else if(type === 'ModulMultimedia'){
+        console.log('Install ModulMobile')
+       }
       }
    })
-
-  //  const InstallApp = (file) =>{
-  //   const filePath = file;
-
-  //   // another ways to run list apt from shell 
-  //   // cat example.list | xargs sudo apt-get -y install
-    
-  //   // Execute the .sh file
-  //   exec(`bash ../shell/${filePath}.sh`, (error, stdout, stderr) => {
-  //     if (error) {
-  //       console.error(`Error executing the .sh file: ${error.message}`);
-  //       return;
-  //     }
-      
-  //     if (stderr) {
-  //       console.error(`Error output from the .sh file: ${stderr}`);
-  //       return;
-  //     }
-      
-  //     console.log(`Output from the .sh file: ${stdout}`);
-  //   });
-  //  }
   }
   return(
-    <button onClick={()=>sendMessageToMainProcess()} className='flex border rounded-md px-3 py-2 mx-auto bg-green-400'>
+    <button onClick={()=>handleClick()} className='flex border rounded-md px-3 py-2 mx-auto bg-green-400'>
       <p className='self-center pr-2 font-bold text-white'>Install </p>
       <img src="../assets/tealinuxLogo.png" width="30px" height="30px" alt="" />
     </button>
