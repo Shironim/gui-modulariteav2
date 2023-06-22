@@ -4,15 +4,20 @@ import { MdDeveloperMode } from 'react-icons/md';
 import { FaLaptopCode } from 'react-icons/fa';
 import { SiMaterialdesignicons } from 'react-icons/si';
 import ModalDialog from "./components/ModalDialog.jsx"
-import teaLinuxLogo from "./assets/tealinuxLogo.png"
-
+import { path } from 'path-browserify';
+import { fs } from 'fs';
 function App() {
+  const { ipcRenderer } = window
+  const test = () =>{
+    ipcRenderer.send('test', 'test')
+  }
+  
   return (
     <div className="App mb-10">
       <header className="bg-green-600 py-2">
         <nav className='flex max-w-5xl mx-auto px-8'>
           <div className='h-[80px]'>
-            <img src={teaLinuxLogo} className='w-full h-full' alt="" />
+            <img src="./assets/tealinuxLogo.png" className='w-full h-full' alt="" />
           </div>
           <p className='self-center font-bold text-white text-xl ml-4'>
             GUI Modularitea
@@ -20,6 +25,9 @@ function App() {
         </nav>
       </header>
       <main>
+        <button onClick={()=>test()}>
+          test
+        </button>
         <h1 className='text-3xl text-center mt-12 mb-28'>
           Tentukan Pilihan Racikan Teh Favoritmu
         </h1>

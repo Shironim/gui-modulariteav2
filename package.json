@@ -27,12 +27,13 @@
     "@electron-forge/plugin-webpack": "^6.2.1",
     "@vercel/webpack-asset-relocator-loader": "1.7.3",
     "autoprefixer": "^10.4.14",
+    "console-browserify": "^1.2.0",
     "css-loader": "^6.0.0",
     "daisyui": "^3.1.5",
     "electron": "25.1.1",
     "file-loader": "^6.2.0",
-    "fs": "^0.0.1-security",
     "node-loader": "^2.0.0",
+    "node-polyfill-webpack-plugin": "^2.0.1",
     "postcss": "^8.4.24",
     "postcss-loader": "^7.3.3",
     "react-icons": "^4.9.0",
@@ -46,13 +47,11 @@
     "@babel/preset-react": "^7.22.5",
     "babel-loader": "^9.1.2",
     "electron-squirrel-startup": "^1.0.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "stream-browserify": "^3.0.0",
     "webpack": "5.0"
-  },
-  "browser": {
-    "fs": false,
-    "os": false,
-    "path": false
   }
 }

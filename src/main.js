@@ -1,5 +1,4 @@
-const { app, BrowserWindow } = require('electron');
-const path = require('path');
+const { app, BrowserWindow, ipcMain } = require('electron');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -9,10 +8,16 @@ if (require('electron-squirrel-startup')) {
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1280,
+    height: 720,
+    title:"Modularitea App",
+    // frame:false,
     webPreferences: {
       preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
+      nodeIntegration: true, // <--- flag
+      enableRemoteModule:true,
+      nodeIntegrationInWorker: true, // <---  for web workers
+      preload: path.join(app.getAppPath(), 'src/preload.js')
     },
   });
 
@@ -20,13 +25,32 @@ const createWindow = () => {
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
+
+// app.whenReady().then(() => {
+//   // Other app initialization code...
+
+//   ipcMain.on('execute-shell-script', () => {
+
+//     // const scriptPath = '/path/to/your/script.sh';
+
+//     // exec(`sh ${scriptPath}`, (error, stdout, stderr) => {
+//     //   if (error) {
+//     //     console.error(`Error executing shell script: ${error}`);
+//     //     return;
+//     //   }
+
+//       console.log('Shell script executed successfully');
+//     //   console.log('stdout:', stdout);
+//     //   console.log('stderr:', stderr);
+//     });
+//   });
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

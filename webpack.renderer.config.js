@@ -27,4 +27,16 @@ module.exports = {
   module: {
     rules,
   },
+  resolve: {
+    fallback: { 
+      fs: require.resolve("fs"),
+      path: require.resolve("path-browserify"),
+      stream: require.resolve("stream-browserify"),
+    },
+    extensions: ['.js', '.jsx'],
+    alias: {
+      path: require.resolve("path-browserify"),
+      fs: require.resolve("fs"),
+    }
+  },
 };

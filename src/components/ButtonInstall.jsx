@@ -1,6 +1,5 @@
 import React from 'react';
 import Swal from 'sweetalert2'
-
 const ButtonInstall = ({type}) =>{
   const handleClick = () =>{
     Swal.fire({
@@ -43,9 +42,9 @@ const ButtonInstall = ({type}) =>{
   //  }
   }
   return(
-    <button onClick={()=>handleClick()} className='flex border rounded-md px-3 py-2 mx-auto bg-green-400'>
+    <button onClick={()=>sendMessageToMainProcess()} className='flex border rounded-md px-3 py-2 mx-auto bg-green-400'>
       <p className='self-center pr-2 font-bold text-white'>Install </p>
-      <img src="/tealinuxLogo.png" width="30px" height="30px" alt="" />
+      <img src="../assets/tealinuxLogo.png" width="30px" height="30px" alt="" />
     </button>
   )
 }
