@@ -5,6 +5,10 @@ import { FaLaptopCode } from 'react-icons/fa';
 import { SiMaterialdesignicons } from 'react-icons/si';
 import ModalDialog from "./components/ModalDialog.jsx"
 function App() {
+  const handleKlik = () =>{
+    window.electron.installWebDev();
+  }
+  
   return (
     <div className="App mb-10">
       <header className="bg-green-600 py-2">
@@ -18,6 +22,9 @@ function App() {
         </nav>
       </header>
       <main>
+        <button onClick={()=>handleKlik()}>
+          klik
+        </button>
         <h1 className='text-3xl text-center mt-12 mb-28'>
           Tentukan Pilihan Racikan Teh Favoritmu
         </h1>

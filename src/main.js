@@ -21,7 +21,7 @@ ipcMain.on('install-web-dev', () => {
       return;
     }
     
-    console.log(`Output from the .sh file:`);
+    console.log(`Finished install`);
   });
 });
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.

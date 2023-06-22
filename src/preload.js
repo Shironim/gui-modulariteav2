@@ -5,5 +5,5 @@ const { contextBridge, ipcRenderer } = require('electron');
 contextBridge.exposeInMainWorld('electron', {
   getPreloadPath: () => ipcRenderer.sendSync('get-preload-path'),
   logSesuatu: () => ipcRenderer.sendSync('log-sesuatu'),
-  installWebDev: () => ipcRenderer.send('install-web-dev'),
+  installWebDev: () => ipcRenderer.sendSync('install-web-dev'),
 });
