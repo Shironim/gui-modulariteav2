@@ -27,7 +27,6 @@ const ButtonInstall = ({type, offLoading, onLoading}) =>{
       confirmButtonText: 'Yes!'
       }).then((result) => {
       if(result.value){
-<<<<<<< HEAD
         onLoading()
        if (type === 'ModulFE') {
         console.log('result true : ', result.value)
@@ -42,22 +41,6 @@ const ButtonInstall = ({type, offLoading, onLoading}) =>{
       setTimeout(() =>{
         offLoading()
       },2000)
-=======
-        if (type === 'ModulFE') {
-          console.log('Install ModulFE')
-          window.electron.installWebFE();
-        }else if(type === 'ModulBE'){
-          console.log('Install ModulBE')
-          window.electron.installWebBE();
-         }else if(type === 'ModulMobile'){
-          console.log('Install ModulMobile')
-          window.electron.installMobile();
-        }else if(type === 'ModulMultimedia'){
-          console.log('Install ModulMultimedia')
-          window.electron.installMultimedia();
-        }
-      }
->>>>>>> 017849101898a2a902b9d8d1c646884aaa00f60c
     })
   }
 // const preloadPath = window.electron.getPreloadPath();
