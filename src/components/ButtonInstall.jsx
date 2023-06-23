@@ -28,19 +28,19 @@ const ButtonInstall = ({type, offLoading, onLoading}) =>{
       }).then((result) => {
       if(result.value){
         console.log('result : ', result.value) 
-      //  if (type === 'ModulFE') {
-      //     console.log('Install ModulFE')
-      //     window.electron.installWebFE();
-      //   }else if(type === 'ModulBE'){
-      //     console.log('Install ModulBE')
-      //     window.electron.installWebBE();
-      //    }else if(type === 'ModulMobile'){
-      //     console.log('Install ModulMobile')
-      //     window.electron.installMobile();
-      //   }else if(type === 'ModulMultimedia'){
-      //     console.log('Install ModulMultimedia')
-      //     window.electron.installMultimedia();
-      //   }
+       if (type === 'ModulFE') {
+          console.log('Install ModulFE')
+          window.electron.installWebFE();
+        }else if(type === 'ModulBE'){
+          console.log('Install ModulBE')
+          window.electron.installWebBE();
+         }else if(type === 'ModulMobile'){
+          console.log('Install ModulMobile')
+          window.electron.installMobile();
+        }else if(type === 'ModulMultimedia'){
+          console.log('Install ModulMultimedia')
+          window.electron.installMultimedia();
+        }
       }
     })
   }
