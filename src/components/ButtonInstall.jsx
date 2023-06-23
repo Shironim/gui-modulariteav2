@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Swal from 'sweetalert2'
 import tealinux from '../assets/tealinuxLogo.png';
+import { on } from 'process';
 
 const ButtonInstall = ({type, offLoading, onLoading}) =>{
   const [modul, setModul] = useState('');
@@ -26,6 +27,7 @@ const ButtonInstall = ({type, offLoading, onLoading}) =>{
       confirmButtonText: 'Yes!'
       }).then((result) => {
       if(result.value){
+        onLoading()
        if (type === 'ModulFE') {
         console.log('result true : ', result.value)
        }
@@ -35,7 +37,10 @@ const ButtonInstall = ({type, offLoading, onLoading}) =>{
         console.log('Install ModulMobile')
       }else if(type === 'ModulMultimedia'){
         console.log('Install ModulMultimedia')
-      }
+      } 
+      setTimeout(() =>{
+        offLoading()
+      },2000)
     })
   }
 // const preloadPath = window.electron.getPreloadPath();
