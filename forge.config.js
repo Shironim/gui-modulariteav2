@@ -20,7 +20,6 @@ module.exports = {
       },
     },
   ],
-  buildIdentifier: 'modularitea-app-build',
   plugins: [
     {
       name: '@electron-forge/plugin-auto-unpack-natives',
