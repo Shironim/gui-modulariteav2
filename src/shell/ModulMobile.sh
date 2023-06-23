@@ -1,3 +1,3 @@
 #! /usr/bin/bash
 
-sudo apt-get install default-jdk default-jre -y && snap install android-studio --classic && snap install flutter --classic
+sudo apt-get install default-jdk default-jre -y && sudo snap install android-studio --classic && sudo snap install flutter --classic
