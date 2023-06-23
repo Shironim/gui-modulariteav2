@@ -4,8 +4,7 @@ const { exec } = require('child_process');
 
 const installFE = (e) =>{
   return new Promise((resolve, reject) => {
-    exec(`bash  ${path.join(app.getAppPath(), 'src/shell/test.sh')}`, (error, stdout, stderr) => {
-        console.log('Running Athena...');
+    exec(`bash  ${path.join(app.getAppPath(), 'src/shell/ModulFEWeb.sh')}`, (error, stdout, stderr) => {
         console.log('stdout: ' + stdout);
         console.log('stderr: ' + stderr);
         if (error !== null) {
@@ -18,10 +17,67 @@ const installFE = (e) =>{
     });
   });
 }
-async function runAsync(e) {
-  await installFE(e);
+
+const installBE = (e) =>{
+  return new Promise((resolve, reject) => {
+    exec(`bash  ${path.join(app.getAppPath(), 'src/shell/ModulBEWeb.sh')}`, (error, stdout, stderr) => {
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+        if (error !== null) {
+            console.log('exec error: ' + error);
+            // Reject if there is an error:
+            return reject(error);
+        }
+        // Otherwise resolve the promise:
+        resolve(e.returnValue = 'Frontend Installed');
+    });
+  });
 }
 
+const installMobile = (e) =>{
+  return new Promise((resolve, reject) => {
+    exec(`bash  ${path.join(app.getAppPath(), 'src/shell/ModulMobile.sh')}`, (error, stdout, stderr) => {
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+        if (error !== null) {
+            console.log('exec error: ' + error);
+            // Reject if there is an error:
+            return reject(error);
+        }
+        // Otherwise resolve the promise:
+        resolve(e.returnValue = 'Frontend Installed');
+    });
+  });
+}
+
+const installMultimedia = (e) =>{
+  return new Promise((resolve, reject) => {
+    exec(`bash  ${path.join(app.getAppPath(), 'src/shell/ModulMultimedia.sh')}`, (error, stdout, stderr) => {
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+        if (error !== null) {
+            console.log('exec error: ' + error);
+            // Reject if there is an error:
+            return reject(error);
+        }
+        // Otherwise resolve the promise:
+        resolve(e.returnValue = 'Frontend Installed');
+    });
+  });
+}
+
+async function runFE(e) {
+  await installFE(e);
+}
+async function runBE(e) {
+  await installBE(e);
+}
+async function runMobile(e) {
+  await installMobile(e);
+}
+async function runMultimedia(e) {
+  await installMultimedia(e);
+}
 // make sure this listener is set before your renderer.js code is called
 ipcMain.on('get-preload-path', (e) => {
   e.returnValue = MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY;
@@ -29,8 +85,17 @@ ipcMain.on('get-preload-path', (e) => {
 ipcMain.on('log-sesuatu', (e) => {
   console.log('test coba deh')
 });
-ipcMain.on('install-web-dev', (e) => {
-  runAsync(e)
+ipcMain.on('install-web-fe', (e) => {
+  runFE(e)
+});
+ipcMain.on('install-web-be', (e) => {
+  runBE(e)
+});
+ipcMain.on('install-mobile', (e) => {
+  runMobile(e)
+});
+ipcMain.on('install-multimedia', (e) => {
+  runMultimedia(e)
 });
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {

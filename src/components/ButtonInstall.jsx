@@ -26,14 +26,9 @@ const ButtonInstall = ({type, offLoading, onLoading}) =>{
       confirmButtonText: 'Yes!'
       }).then((result) => {
       if(result.value){
-        onLoading();
-        console.log('result true : ', result.value)
        if (type === 'ModulFE') {
-        const test = window.electron.installWebDev();
-        if(test == 'isInstalled'){
-          console.log('ini :',test)
-          offLoading();
-        }
+        console.log('result true : ', result.value)
+       }
       }else if(type === 'ModulBE'){
         console.log('Install ModulBE')
        }else if(type === 'ModulMobile'){
@@ -41,7 +36,6 @@ const ButtonInstall = ({type, offLoading, onLoading}) =>{
       }else if(type === 'ModulMultimedia'){
         console.log('Install ModulMultimedia')
       }
-    }
     })
   }
 // const preloadPath = window.electron.getPreloadPath();
