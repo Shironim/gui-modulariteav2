@@ -5,11 +5,11 @@ let ModulFE = [
   },
   {
     "package" : "Browser",
-    "variant" : ['Chrome']
+    "variant" : ['Chromium']
   },
   {
     "package" : "JS Runtime",
-    "variant" : ['Node Js']
+    "variant" : ['Node Js ']
   },
 ]
 

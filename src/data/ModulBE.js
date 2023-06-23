@@ -5,7 +5,7 @@ let ModulBE = [
   },
   {
     "package" : "Browser",
-    "variant" : ['Chrome']
+    "variant" : ['Chromium']
   },
   {
     "package" : "JS Runtime",
