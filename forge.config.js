@@ -1,31 +1,26 @@
 module.exports = {
   packagerConfig: {
     asar: true,
+    icon: './src/assets/tealinuxLogo.png',
+    name: 'Modularitea',
+    platform: 'linux',
+    arch: 'x64',
+    executableName: 'modularitea',
   },
   rebuildConfig: {},
   makers: [
-    {
-      name: '@electron-forge/maker-squirrel',
-      config: {},
-    },
-    {
-      name: '@electron-forge/maker-zip',
-      platforms: ['darwin'],
-    },
     {
       name: '@electron-forge/maker-deb',
       config: {
         options:{
           maintener: "Doscom",
-          homepage: "https://tealinuxos.org/"
+          homepage: "https://tealinuxos.org/",
+          icon: './src/assets/tealinuxLogo.png'
         }
       },
     },
-    {
-      name: '@electron-forge/maker-rpm',
-      config: {},
-    },
   ],
+  buildIdentifier: 'modularitea-app-build',
   plugins: [
     {
       name: '@electron-forge/plugin-auto-unpack-natives',

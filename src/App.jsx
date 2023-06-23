@@ -27,7 +27,7 @@ function App() {
       <header className="bg-green-600 py-2">
         <nav className='flex max-w-5xl mx-auto px-8'>
           <div className='h-[80px]'>
-            <img src={tealinux} className='w-full h-full' alt="" />
+            <img src="./assets/tealinuxLogo.png" className='w-full h-full' alt="" />
           </div>
           <p className='self-center font-bold text-white text-xl ml-4'>
             GUI Modularitea

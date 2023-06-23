@@ -29,7 +29,7 @@ const installBE = (e) =>{
             return reject(error);
         }
         // Otherwise resolve the promise:
-        resolve(e.returnValue = 'Frontend Installed');
+        resolve(e.returnValue = 'Backend Installed');
     });
   });
 }
@@ -45,7 +45,7 @@ const installMobile = (e) =>{
             return reject(error);
         }
         // Otherwise resolve the promise:
-        resolve(e.returnValue = 'Frontend Installed');
+        resolve(e.returnValue = 'Mobile Installed');
     });
   });
 }
@@ -61,7 +61,7 @@ const installMultimedia = (e) =>{
             return reject(error);
         }
         // Otherwise resolve the promise:
-        resolve(e.returnValue = 'Frontend Installed');
+        resolve(e.returnValue = 'Multimedia Installed');
     });
   });
 }

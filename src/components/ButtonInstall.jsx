@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Swal from 'sweetalert2'
 import tealinux from '../assets/tealinuxLogo.png';
-import { on } from 'process';
 
 const ButtonInstall = ({type, offLoading, onLoading}) =>{
   const [modul, setModul] = useState('');
@@ -21,34 +20,30 @@ const ButtonInstall = ({type, offLoading, onLoading}) =>{
     Swal.fire({
       title: `Install ${modul} ?`,
       icon: 'warning',
-      showCancelButton: false,
+      showCloseButton: true,
+      showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33', 
       confirmButtonText: 'Yes!'
       }).then((result) => {
       if(result.value){
-        onLoading()
-       if (type === 'ModulFE') {
-          console.log('Install ModulFE')
-          const install = window.electron.installWebFE();
-          if(install){
-            offLoading()
-          }
-        }else if(type === 'ModulBE'){
-          console.log('Install ModulBE')
-          window.electron.installWebBE();
-         }else if(type === 'ModulMobile'){
-          console.log('Install ModulMobile')
-          window.electron.installMobile();
-        }else if(type === 'ModulMultimedia'){
-          console.log('Install ModulMultimedia')
-          window.electron.installMultimedia();
-        }
+        console.log('result : ', result.value) 
+      //  if (type === 'ModulFE') {
+      //     console.log('Install ModulFE')
+      //     window.electron.installWebFE();
+      //   }else if(type === 'ModulBE'){
+      //     console.log('Install ModulBE')
+      //     window.electron.installWebBE();
+      //    }else if(type === 'ModulMobile'){
+      //     console.log('Install ModulMobile')
+      //     window.electron.installMobile();
+      //   }else if(type === 'ModulMultimedia'){
+      //     console.log('Install ModulMultimedia')
+      //     window.electron.installMultimedia();
+      //   }
       }
     })
   }
-// const preloadPath = window.electron.getPreloadPath();
-// console.log('ini di button ', preloadPath)
 return(
     <>
       <button onClick={()=>handleClick(type)} className='flex border rounded-md px-3 py-2 mx-auto bg-green-400'>

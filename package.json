@@ -54,5 +54,24 @@
     "react-loader-spinner": "^5.3.4",
     "stream-browserify": "^3.0.0",
     "webpack": "5.0"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "executableName": "modularitea"
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {
+            "options":{
+              "maintener": "Doscom",
+              "homepage": "https://tealinuxos.org/",
+              "icon": "./src/assets/tealinuxLogo.png"
+            }
+          }
+        }
+      ]
+    }
   }
 }
