@@ -14,7 +14,12 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-deb',
-      config: {},
+      config: {
+        options:{
+          maintener: "Doscom",
+          homepage: "https://tealinuxos.org/"
+        }
+      },
     },
     {
       name: '@electron-forge/maker-rpm',
