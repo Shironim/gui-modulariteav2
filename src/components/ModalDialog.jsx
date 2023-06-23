@@ -3,7 +3,7 @@ import WebDevList from './WebDevList.jsx';
 import MobileList from './MobileList.jsx';
 import MultimediaList from './MultimediaList.jsx';
 
-const ModalDialog = ({id, type}) =>{
+const ModalDialog = ({id, type, onLoading, offLoading}) =>{
   return(
     <dialog id={id} className="modal">
       <div className={`modal-box p-0 ${type === 'webDev' ? 'max-w-4xl' : 'max-w-xl'}`}>
@@ -11,17 +11,17 @@ const ModalDialog = ({id, type}) =>{
           <button className="btn btn-sm btn-circle btn-ghost absolute top-2 right-4">✕</button>
           {
             type === 'webDev' && (
-              <WebDevList />
+              <WebDevList onLoading={onLoading} offLoading={offLoading} />
             )
           }
           {
             type === 'mobileDev' && (
-              <MobileList />
+              <MobileList onLoading={onLoading} offLoading={offLoading} />
             )
           }
           {
             type === 'creative' && (
-              <MultimediaList />
+              <MultimediaList onLoading={onLoading} offLoading={offLoading} />
             )
           }
         </form>

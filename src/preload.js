@@ -6,4 +6,5 @@ contextBridge.exposeInMainWorld('electron', {
   getPreloadPath: () => ipcRenderer.sendSync('get-preload-path'),
   logSesuatu: () => ipcRenderer.sendSync('log-sesuatu'),
   installWebDev: () => ipcRenderer.sendSync('install-web-dev'),
+  getData: () => ipcRenderer.on('install-web-dev'),
 });

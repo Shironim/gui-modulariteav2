@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './index.css';
 import { MdDeveloperMode } from 'react-icons/md';
 import { FaLaptopCode } from 'react-icons/fa';
@@ -7,6 +7,20 @@ import ModalDialog from "./components/ModalDialog.jsx"
 import tealinux from './assets/tealinuxLogo.png';
 
 function App() {
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onLoading = () =>{
+    setIsLoading(true);
+  }
+  const offLoading = () =>{
+    setIsLoading(false);
+  }
+
+  useEffect(()=>{
+    console.log('isLoading: ', isLoading)
+  },[isLoading])
+
   return (
     <div className="App mb-10">
       <header className="bg-green-600 py-2">
@@ -41,12 +55,21 @@ function App() {
             <p className='text-xl font-semibold text-center'>
               Multimedia
             </p>
-          </div>
+          </div>  
         </div>
-        <ModalDialog id={'modalWeb'} type={'webDev'} />
-        <ModalDialog id={'modalMobile'} type={'mobileDev'} />
-        <ModalDialog id={'modalMultimedia'} type={'creative'} />
+        <ModalDialog onLoading={onLoading} offLoading={offLoading} id={'modalWeb'} type={'webDev'} />
+        <ModalDialog onLoading={onLoading} offLoading={offLoading} id={'modalMobile'} type={'mobileDev'} />
+        <ModalDialog onLoading={onLoading} offLoading={offLoading} id={'modalMultimedia'} type={'creative'} />
       </main>
+      <dialog id="my_modal_2" className={`modal ${isLoading ? 'modal-open' : ''}`}>
+        <form method="dialog" className="modal-box">
+          <h3 className="font-bold text-lg">Hello!</h3>
+          <p className="py-4">Press ESC key or click outside to close</p>
+        </form>
+        <form method="dialog" className="modal-backdrop">
+          <button>close</button>
+        </form>
+      </dialog>
     </div>
   );
 }

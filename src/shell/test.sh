@@ -1,2 +1,3 @@
 #! /usr/bin/bash
-pkexec apt-get install blender -y
+
+pkexec apt-get install audacity -y

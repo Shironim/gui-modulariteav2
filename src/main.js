@@ -2,6 +2,26 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const { exec } = require('child_process');
 
+const installFE = (e) =>{
+  return new Promise((resolve, reject) => {
+    exec(`bash  ${path.join(app.getAppPath(), 'src/shell/test.sh')}`, (error, stdout, stderr) => {
+        console.log('Running Athena...');
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+        if (error !== null) {
+            console.log('exec error: ' + error);
+            // Reject if there is an error:
+            return reject(error);
+        }
+        // Otherwise resolve the promise:
+        resolve(e.returnValue = 'Frontend Installed');
+    });
+  });
+}
+async function runAsync(e) {
+  await installFE(e);
+}
+
 // make sure this listener is set before your renderer.js code is called
 ipcMain.on('get-preload-path', (e) => {
   e.returnValue = MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY;
@@ -9,20 +29,8 @@ ipcMain.on('get-preload-path', (e) => {
 ipcMain.on('log-sesuatu', (e) => {
   console.log('test coba deh')
 });
-ipcMain.on('install-web-dev', () => {
-  exec(`bash  ${path.join(app.getAppPath(), 'src/shell/test.sh')}`, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error executing the .sh file: ${error.message}`);
-      return;
-    }
-    
-    if (stderr) {
-      console.error(`Error output from the .sh file: ${stderr}`);
-      return;
-    }
-    
-    console.log(`Finished install`);
-  });
+ipcMain.on('install-web-dev', (e) => {
+  runAsync(e)
 });
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -35,7 +43,6 @@ const createWindow = () => {
     width: 1280,
     height: 720,
     title:"Modularitea App",
-    // frame:false,
     webPreferences: {
       preload: path.join(app.getAppPath(), 'src/preload.js'),
       nodeIntegration: false, // <--- flag
@@ -45,6 +52,9 @@ const createWindow = () => {
     },
   });
 
+  ipcMain.on('get-preload-path', (e) => {
+    e.returnValue = MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY;
+  })
   // and load the index.html of the app.
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY);
 
@@ -56,25 +66,6 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
-
-// app.whenReady().then(() => {
-//   // Other app initialization code...
-
-//   ipcMain.on('execute-shell-script', () => {
-
-//     // const scriptPath = '/path/to/your/script.sh';
-
-//     // exec(`sh ${scriptPath}`, (error, stdout, stderr) => {
-//     //   if (error) {
-//     //     console.error(`Error executing shell script: ${error}`);
-//     //     return;
-//     //   }
-
-//       console.log('Shell script executed successfully');
-//     //   console.log('stdout:', stdout);
-//     //   console.log('stderr:', stderr);
-//     });
-//   });
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

@@ -1,5 +1,7 @@
 #! /usr/bin/bash
 
+pkexec sudo apt-get install nodejs && snap install code --classic && snap install chromium
+
 #Install Visual Studio Code
 sudo apt-get install wget gpg -y
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
@@ -9,6 +11,7 @@ rm -f packages.microsoft.gpg
 sudo apt-get install apt-transport-https -y -q
 sudo apt-get update
 sudo apt-get install code -y -q
+
 
 #Install Broswer Chrome
 sudo apt-get install wget -y
