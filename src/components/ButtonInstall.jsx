@@ -26,15 +26,19 @@ const ButtonInstall = ({type, offLoading, onLoading}) =>{
       confirmButtonText: 'Yes!'
       }).then((result) => {
       if(result.value){
-       if (type === 'ModulFE') {
-        console.log('result true : ', result.value)
-       }
-      }else if(type === 'ModulBE'){
-        console.log('Install ModulBE')
-       }else if(type === 'ModulMobile'){
-        console.log('Install ModulMobile')
-      }else if(type === 'ModulMultimedia'){
-        console.log('Install ModulMultimedia')
+        if (type === 'ModulFE') {
+          console.log('Install ModulFE')
+          window.electron.installWebFE();
+        }else if(type === 'ModulBE'){
+          console.log('Install ModulBE')
+          window.electron.installWebBE();
+         }else if(type === 'ModulMobile'){
+          console.log('Install ModulMobile')
+          window.electron.installMobile();
+        }else if(type === 'ModulMultimedia'){
+          console.log('Install ModulMultimedia')
+          window.electron.installMultimedia();
+        }
       }
     })
   }
