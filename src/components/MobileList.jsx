@@ -6,10 +6,10 @@ import ButtonInstall from "./ButtonInstall.jsx"
 const MobileList = () => {
   return(
     <div className='w-full'>
-      <h1 className='text-2xl text-center mb-6'>Racik Teh Favoritmu</h1>
       <div className='flex flex-col justify-center'>
+        <p className='text-center font-bold text-lg mb-6'>Racikan Mobile </p>
         <PackageTea Modul={ModulMobile} />
-        <ButtonInstall type={'ModulMObile'}/>
+        <ButtonInstall type={'ModulMobile'}/>
       </div>
     </div>
   )

@@ -7,7 +7,6 @@ import ButtonInstall from "./ButtonInstall.jsx"
 const WebDevList = () => {
   return(
     <div className='max-w-4xl mx-auto'>
-      <h1 className='text-2xl text-center mb-6'>Racik Teh Favoritmu</h1>
       <div className='flex'>
         <div className='basis-1/2 border-r py-4'>
           <p className='text-center font-bold text-lg mb-6'>Racikan Frontend </p>

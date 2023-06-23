@@ -4,17 +4,15 @@ import { MdDeveloperMode } from 'react-icons/md';
 import { FaLaptopCode } from 'react-icons/fa';
 import { SiMaterialdesignicons } from 'react-icons/si';
 import ModalDialog from "./components/ModalDialog.jsx"
+import tealinux from './assets/tealinuxLogo.png';
+
 function App() {
-  const handleKlik = () =>{
-    window.electron.installWebDev();
-  }
-  
   return (
     <div className="App mb-10">
       <header className="bg-green-600 py-2">
         <nav className='flex max-w-5xl mx-auto px-8'>
           <div className='h-[80px]'>
-            <img src="./assets/tealinuxLogo.png" className='w-full h-full' alt="" />
+            <img src={tealinux} className='w-full h-full' alt="" />
           </div>
           <p className='self-center font-bold text-white text-xl ml-4'>
             GUI Modularitea
@@ -22,9 +20,6 @@ function App() {
         </nav>
       </header>
       <main>
-        <button onClick={()=>handleKlik()}>
-          klik
-        </button>
         <h1 className='text-3xl text-center mt-12 mb-28'>
           Tentukan Pilihan Racikan Teh Favoritmu
         </h1>
